@@ -7,7 +7,7 @@ tokens:
   - chain: genesisl1
     type: collateral
     token: "0x59a153c0fD47C6c1F305Abdb8030A90Aa3001fe2"
-    router: "0x05cD463228768BEC155cBE9180E95652490BECF6"
+    router: "0x05Cd463228768Bec155CBe9180E95652490beCf6"
     mailbox: "0xE6522A891702Cd2E8CC2A5182638c9DA1DD44B22"
     interchainSecurityModule: "0x5aD803d8635eE8a065938d3F36A85baecF517712"
     ismValidators:
@@ -21,7 +21,7 @@ tokens:
     type: synthetic
     router: "0xE6522A891702Cd2E8CC2A5182638c9DA1DD44B22"
     mailbox: "0xeA87ae93Fa0019a82A727bfd3eBd1cFCa8f64f1D"
-    interchainSecurityModule: "0xab41b4A43F10FbDD10381fba2bb8A95a59938f7C"
+    interchainSecurityModule: "0xab41B4A43f10fBdd10381fBA2BB8A95A59938f7C"
     ismValidators:
       - "0x7F35C6adF5254908DF6604Ee664B8e1575213B80"  # GenesisL1 validator
     ismThreshold: 1

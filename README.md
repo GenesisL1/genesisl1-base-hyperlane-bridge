@@ -71,8 +71,8 @@ sudo N=1 MINIO_KEY=val1 MINIO_SECRET='...' PRIVATE_KEY=0x... \
 ```
 
 ```bash
-git clone https://github.com/GenesisL1/hyperlane-genesisl1-base.git
-cd hyperlane-genesisl1-base/validator
+git clone https://github.com/GenesisL1/genesisl1-base-hyperlane-bridge.git
+cd genesisl1-base-hyperlane-bridge/validator
 
 cp .env.example .env
 # edit .env, fill in HYP_VALIDATOR_KEY
@@ -85,7 +85,7 @@ See [docs/validator-setup.md](docs/validator-setup.md) for the full guide.
 ### Run a relayer
 
 ```bash
-cd hyperlane-genesisl1-base/relayer
+cd genesisl1-base-hyperlane-bridge/relayer
 
 cp .env.example .env
 # edit .env, fill in HYP_DEFAULTSIGNER_KEY

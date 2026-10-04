@@ -27,7 +27,7 @@ No IGP deployed on GenesisL1 (by design — relayer-subsidized model).
 | Contract                         | Address                                      |
 | -------------------------------- | -------------------------------------------- |
 | wL1 token (WETH9-style)          | `0x59a153c0fD47C6c1F305Abdb8030A90Aa3001fe2` |
-| HypERC20Collateral router        | `0x05cD463228768BEC155cBE9180E95652490BECF6` |
+| HypERC20Collateral router        | `0x05Cd463228768Bec155CBe9180E95652490beCf6` |
 | ISM (validates msgs from Base)   | `0x5aD803d8635eE8a065938d3F36A85baecF517712` |
 
 ## Base (domain 8453)
@@ -47,7 +47,7 @@ No IGP deployed on GenesisL1 (by design — relayer-subsidized model).
 | Contract                             | Address                                      |
 | ------------------------------------ | -------------------------------------------- |
 | wL1 synthetic + router (same addr)   | `0xE6522A891702Cd2E8CC2A5182638c9DA1DD44B22` |
-| ISM (validates msgs from GenesisL1)  | `0xab41b4A43F10FbDD10381fba2bb8A95a59938f7C` |
+| ISM (validates msgs from GenesisL1)  | `0xab41B4A43f10fBdd10381fBA2BB8A95A59938f7C` |
 
 ## Canonical validators
 

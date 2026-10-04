@@ -20,8 +20,8 @@ relayer — no canonical approval required.
 ## 1. Clone and configure
 
 ```bash
-git clone https://github.com/GenesisL1/hyperlane-genesisl1-base.git
-cd hyperlane-genesisl1-base/relayer
+git clone https://github.com/GenesisL1/genesisl1-base-hyperlane-bridge.git
+cd genesisl1-base-hyperlane-bridge/relayer
 
 cp .env.example .env
 ```

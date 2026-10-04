@@ -22,8 +22,8 @@ them.
 ## 1. Clone the repo
 
 ```bash
-git clone https://github.com/GenesisL1/hyperlane-genesisl1-base.git
-cd hyperlane-genesisl1-base/validator
+git clone https://github.com/GenesisL1/genesisl1-base-hyperlane-bridge.git
+cd genesisl1-base-hyperlane-bridge/validator
 ```
 
 ## 2. Generate (or import) a validator key
