@@ -22,8 +22,41 @@ json_rpc_balance() {
   echo "$resp" | sed -nE 's/.*"result":"(0x[0-9a-fA-F]+)".*/\1/p'
 }
 
+# Balances in wei exceed bash's 64-bit integers (max ~9.22e18, i.e. ~9.22
+# L1/ETH), so convert and compare them as decimal strings instead of
+# using printf %d or (( )).
+
+# hex_to_dec 0x56bc75e2d63100000 -> 100000000000000000000
 hex_to_dec() {
-  printf "%d" "$1"
+  local hex="${1#0x}" limbs=(0) i j d carry v out
+  hex="${hex,,}"
+  for (( i = 0; i < ${#hex}; i++ )); do
+    d=$(( 16#${hex:i:1} ))
+    carry=$d
+    for (( j = 0; j < ${#limbs[@]}; j++ )); do
+      v=$(( limbs[j] * 16 + carry ))
+      limbs[j]=$(( v % 1000000000 ))
+      carry=$(( v / 1000000000 ))
+    done
+    (( carry > 0 )) && limbs+=("$carry")
+  done
+  out="${limbs[-1]}"
+  for (( j = ${#limbs[@]} - 2; j >= 0; j-- )); do
+    out+=$(printf "%09d" "${limbs[j]}")
+  done
+  echo "$out"
+}
+
+# dec_lt A B -> success if decimal string A < decimal string B
+dec_lt() {
+  local a b
+  a=$(echo "$1" | sed -E 's/^0+([0-9])/\1/')
+  b=$(echo "$2" | sed -E 's/^0+([0-9])/\1/')
+  if (( ${#a} != ${#b} )); then
+    (( ${#a} < ${#b} ))
+  else
+    [[ "$a" < "$b" ]]
+  fi
 }
 
 BASE_HEX=$(json_rpc_balance "$BASE_RPC" "$RELAYER_ADDR")
@@ -42,11 +75,11 @@ echo "  Base:      $BASE_DEC wei (min $BASE_MIN_WEI)"
 echo "  GenesisL1: $GEN_DEC wei (min $GEN_MIN_WEI)"
 
 CODE=0
-if (( BASE_DEC < BASE_MIN_WEI )); then
+if dec_lt "$BASE_DEC" "$BASE_MIN_WEI"; then
   echo "  ALERT: Base balance below threshold"
   CODE=1
 fi
-if (( GEN_DEC < GEN_MIN_WEI )); then
+if dec_lt "$GEN_DEC" "$GEN_MIN_WEI"; then
   echo "  ALERT: GenesisL1 balance below threshold"
   CODE=1
 fi
